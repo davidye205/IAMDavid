@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const verify = require("./verifyToken");
+const verify = require("../utils/verifyToken");
 const {
   getAllPermissionsForUser,
   getPermissionForResource,

@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const cors = require("cors");
-const verify = require("./verifyToken");
+const verify = require("../utils/verifyToken");
 
 const User = require("../model/user");
 const bcrypt = require("bcryptjs");
@@ -35,9 +35,9 @@ router.post("/register", async (req, res) => {
 
   try {
     const savedUser = await user.save();
-    res.status(200).send({ user: savedUser._id });
     const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
-    res.header("auth-token", token).send(token);
+
+    res.header("auth-token", token).send({ user: savedUser._id, token });
   } catch (err) {
     res.status(400).send(err.message);
   }

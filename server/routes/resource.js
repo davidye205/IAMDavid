@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const verify = require("./verifyToken");
+const verify = require("../utils/verifyToken");
 const Resource = require("../model/resource");
 const { Permissions } = require("../enums/permissions");
 const {
