@@ -1,0 +1,35 @@
+* {
+    font-family:Arial, Helvetica, sans-serif
+}
+
+.container {
+    display: grid;
+    width: 100vw;
+    height: 100vh;
+    grid-template-columns: 20% auto 20%;
+    grid-template-rows: 1fr 8fr 1fr;
+   
+}
+
+.header {
+    grid-row: 1 / 2 ;
+    grid-column:  2 / 3;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    font-size: 30px;
+
+}
+
+.login {
+    grid-column: 2 / 3;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup {
+    grid-column: 3 / 4;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}

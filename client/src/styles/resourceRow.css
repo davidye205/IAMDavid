@@ -1,0 +1,119 @@
+.resourceRow {
+    display:grid;
+    grid-template-columns: 3fr 1fr 1fr 1fr;
+    border: solid;
+    border-width: 2px;
+    border-color: grey;
+    margin-bottom: 2px;
+    border-radius: 2px;
+}
+
+.resourceInput {
+    width:300px
+}
+
+.permissionContainer {
+    display:grid;
+    grid-template-columns: 8fr 1fr 2fr 2fr;
+}
+
+.resourceName {
+    grid-column: 1/2;
+    padding: 5px;
+    overflow:hidden;
+    white-space:nowrap;
+    width:400px;
+}  
+.resourceId {
+    grid-column: 2/3;
+    padding: 5px;
+    font-size:x-small;
+}    
+
+.ownerId {
+    grid-column: 3/4;
+    padding: 5px;
+    font-size:x-small;
+}
+
+.permissionLevel {
+    grid-column: 1/2;
+    border: solid;
+    border-width: 1px; 
+    border-left-width: 2px;
+    border-color: grey;
+    padding: 5px;
+
+}
+
+
+.editButton {
+    grid-column: 2/3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: aliceblue;
+    font-weight: bolder;
+    font-size: larger;
+    border: solid;
+    border-width: 1px; 
+    border-left-width: 2px;
+    border-color: grey;
+    cursor: pointer;
+    background-color: #0067C8;
+}
+
+.editButton:hover {
+    background-color: #8dc6fc;
+}
+
+.inviteButton {
+    grid-column: 3/4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: aliceblue;
+    font-weight: bolder;
+    font-size: larger;
+    border: solid;
+    border-width: 1px; 
+    border-color: grey;
+    cursor: pointer;
+    background-color: #0067C8;
+}
+
+.inviteButton:hover {
+    background-color: #8dc6fc;
+}
+
+.deleteButton {
+    grid-column: 4/5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: aliceblue;
+    font-weight: bolder;
+    font-size: larger;
+    border: solid;
+    border-width: 1px; 
+    border-color: grey;
+    cursor: pointer;
+    background-color: #0067C8;
+}
+
+
+.deleteButton:hover {
+    background-color: #8dc6fc;
+}
+
+.assignPermission {
+    display:flex;
+    justify-content: end;
+    margin: 10px;
+}
+
+.deleteResource {
+    display:flex;
+    justify-content: end;
+    margin: 10px;
+}
