@@ -27,7 +27,6 @@ const getPermissionForResource = async (userId, resourceId, permission) => {
     if (!userPermission) {
       return false;
     }
-    console.log(userPermission.permission == permission);
     return userPermission.permission == permission;
   } catch (err) {
     throw new Error(err.message);

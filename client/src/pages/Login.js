@@ -27,8 +27,7 @@ function Login() {
     })
       // Handle the response from backend here
       .then((res) => {
-        console.log(res.data);
-        setUser({ token: res.data.token, userId: res.data.userId });
+        setUser({ token: res.headers["auth-token"] });
         navigate("/dashboard");
       })
 

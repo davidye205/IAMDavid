@@ -11,12 +11,8 @@ import Dashboard from "./pages/Dashboard";
 
 function App() {
   const { user, setUser } = useContext(UserContext);
-  console.log(user);
-
   const signout = () => {
-    console.log(user);
     setUser({ token: "" });
-    console.log(user);
   };
 
   return (

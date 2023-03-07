@@ -7,7 +7,6 @@ function verifyAuth(req, res, next) {
 
   try {
     const verified = jwt.verify(token, process.env.TOKEN_SECRET);
-    console.log(verified);
     req.user = verified;
     //Continues to next middleware
     next();

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context/userContext";
 import "../styles/Signup.css";
@@ -8,7 +8,7 @@ function Signup() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { setUser } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
 
   let navigate = useNavigate();
 
@@ -29,8 +29,7 @@ function Signup() {
     })
       // Handle the response from backend here
       .then((res) => {
-        console.log(res.data);
-        setUser({ token: res.data.token, userId: res.data.userId });
+        setUser({ token: res.headers["auth-token"] });
         navigate("/dashboard");
       })
 

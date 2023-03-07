@@ -36,8 +36,7 @@ router.post("/register", async (req, res) => {
   try {
     const savedUser = await user.save();
     const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
-
-    res.header("auth-token", token).send({ user: savedUser._id, token });
+    res.header("auth-token", token).send("User successfully registered");
   } catch (err) {
     res.status(400).send(err.message);
   }
@@ -70,7 +69,7 @@ router.post("/login", async (req, res) => {
   //JWT - JSON web tokens, make requests as a logged in user
   try {
     const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
-    res.header("auth-token", token).send({ token, userId: user._id });
+    res.header("auth-token", token).send("User logged in");
   } catch (err) {
     res.status(400).send(err.message);
   }
@@ -82,10 +81,8 @@ router.post("/", verify, async (req, res) => {
     const user = await User.findOne({
       userId: req.user._id,
     });
-    console.log(user);
 
     user.name = req.body.name;
-    console.log(user);
     const updatedUser = await user.save();
     res.status(200).send(updatedUser);
   } catch (err) {

@@ -10,6 +10,12 @@ const resourceRoute = require("./routes/resource");
 const app = express();
 const PORT = process.env.PORT || 8080;
 
+const corsOptions = {
+  exposedHeaders: "auth-token",
+};
+
+app.use(cors(corsOptions));
+
 dotenv.config();
 
 //Connect to DB
