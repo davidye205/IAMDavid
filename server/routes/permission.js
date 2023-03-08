@@ -5,7 +5,7 @@ const {
   getPermissionForResource,
   upsertPermission,
   deletePermissionsForResource,
-} = require("../controllers/permissions");
+} = require("../controllers/permissionController");
 
 //Get user permissions (display all of them)
 router.get("/", verify, async (req, res) => {

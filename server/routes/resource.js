@@ -7,7 +7,7 @@ const {
   getPermissionForResource,
   getAllPermissionsForUser,
   deletePermissionsForResource,
-} = require("../controllers/permissions");
+} = require("../controllers/permissionController");
 
 //Create new resource
 router.post("/", verify, async (req, res) => {
