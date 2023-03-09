@@ -29,7 +29,7 @@ const registerUser = async (name, email, password) => {
     const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
     return token;
   } catch (err) {
-    throw new Error(err.message);
+    throw new Error(err);
   }
 };
 
@@ -45,7 +45,7 @@ const loginUser = async (email, password) => {
     user = await User.findOne({ email: email });
     if (!user) throw new Error("Email not found");
   } catch (err) {
-    throw new Error(err.message);
+    throw new Error(err);
   }
 
   //Check if passwords match
@@ -53,7 +53,7 @@ const loginUser = async (email, password) => {
     const validPass = await bcrypt.compare(password, user.password);
     if (!validPass) throw new Error("Invalid password");
   } catch (err) {
-    throw new Error(err.message);
+    throw new Error(err);
   }
 
   //Create and assign web token
@@ -62,7 +62,7 @@ const loginUser = async (email, password) => {
     const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
     return token;
   } catch (err) {
-    throw new Error(err.message);
+    throw new Error(err);
   }
 };
 
