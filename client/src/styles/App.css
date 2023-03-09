@@ -17,8 +17,12 @@
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
     font-size: 30px;
-
 }
+
+a {
+    color: black;
+    text-decoration: none;
+} 
 
 .login {
     grid-column: 2 / 3;
