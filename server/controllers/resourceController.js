@@ -5,6 +5,7 @@ const {
   upsertPermission,
   getPermissionForResource,
   getAllPermissionsForUser,
+  getUsersForResource,
   deletePermissionsForResource,
 } = require("../controllers/permissionController");
 
@@ -69,6 +70,20 @@ const getAllResourcesForUser = async (userId) => {
   }
 };
 
+//Get all users with a permission on a resource (user must be manager)
+const getAllUsersForResource = async (userId, resourceId) => {
+  try {
+    const usersWithPermission = await getUsersForResource(userId, resourceId);
+    const users = usersWithPermission.map((permission) => {
+      return { userId: permission.userId, permission: permission.permission };
+    });
+
+    return users;
+  } catch (err) {
+    throw new Error(err);
+  }
+};
+
 //edit resource
 const updateResource = async (userId, resourceId, resourceName) => {
   const resource = await Resource.findOne({
@@ -124,6 +139,7 @@ const deleteResourceAndPermissions = async (userId, resourceId) => {
 module.exports = {
   registerNewResource,
   getAllResourcesForUser,
+  getAllUsersForResource,
   updateResource,
   deleteResourceAndPermissions,
 };

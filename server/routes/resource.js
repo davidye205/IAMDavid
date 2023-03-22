@@ -4,6 +4,7 @@ const { upsertPermission } = require("../controllers/permissionController");
 const {
   registerNewResource,
   getAllResourcesForUser,
+  getAllUsersForResource,
   updateResource,
   deleteResourceAndPermissions,
 } = require("../controllers/resourceController");
@@ -33,6 +34,19 @@ router.get("/", verify, async (req, res) => {
     res.status(200).send(resources);
   } catch (err) {
     res.status(400).send(err.message);
+  }
+});
+
+//Get all users with a permission on a resource as an owner of a resource
+router.get("/:resourceId/users", verify, async (req, res) => {
+  try {
+    const users = await getAllUsersForResource(
+      req.user._id,
+      req.params.resourceId
+    );
+    res.status(200).send(users);
+  } catch (err) {
+    res.status(400).send(err.nmessage);
   }
 });
 

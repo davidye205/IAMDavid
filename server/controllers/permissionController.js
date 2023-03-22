@@ -33,6 +33,27 @@ const getPermissionForResource = async (userId, resourceId, permission) => {
   }
 };
 
+//Get all users for a resource
+const getUsersForResource = async (userId, resourceId) => {
+  const userPermission = await UserPermission.findOne({
+    userId,
+    resourceId,
+  });
+
+  if (userPermission.permission != Permissions.MANAGE) {
+    throw new Error("User does not have permission to view users");
+  }
+  try {
+    const usersForResource = await UserPermission.find({
+      resourceId,
+    });
+
+    return usersForResource;
+  } catch (err) {
+    throw new Error(err.message);
+  }
+};
+
 //Split into post and update permissions
 const upsertPermission = async (
   viewerUserId,
@@ -122,6 +143,7 @@ const deletePermissionsForResource = async (userId, resourceId) => {
 module.exports = {
   getAllPermissionsForUser,
   getPermissionForResource,
+  getUsersForResource,
   upsertPermission,
   deletePermissionsForResource,
 };
