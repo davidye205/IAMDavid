@@ -120,7 +120,11 @@ Fetch operation that returns all the permissions that the currently authenticate
 
 #### `GET /permissions/{resourceId}`
 
-Fetch operation that takes in a `permission` and returns a boolean depending on whether the authenticated the supplied `permission` on the `resouceId`. This is the primary API used to do ACL checks.
+Fetch operation that takes in a `permission` and returns a boolean depending on whether the authenticated the supplied `permission` on the `resourceId`. This is the primary API used to do ACL checks.
+
+#### `GET /permissions/{resourceId}/users`
+
+Fetch operation that takes a `resourceId` and returns all users with a permission on the resource, if the user has a `manage` permission.
 
 #### `DELETE /permissions/{resourceId}`
 
