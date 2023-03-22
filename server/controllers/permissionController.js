@@ -44,11 +44,15 @@ const getUsersForResource = async (userId, resourceId) => {
     throw new Error("User does not have permission to view users");
   }
   try {
-    const usersForResource = await UserPermission.find({
+    const usersWithPermission = await UserPermission.find({
       resourceId,
     });
 
-    return usersForResource;
+    const users = usersWithPermission.map((permission) => {
+      return { userId: permission.userId, permission: permission.permission };
+    });
+
+    return users;
   } catch (err) {
     throw new Error(err.message);
   }

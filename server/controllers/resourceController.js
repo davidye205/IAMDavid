@@ -73,11 +73,7 @@ const getAllResourcesForUser = async (userId) => {
 //Get all users with a permission on a resource (user must be manager)
 const getAllUsersForResource = async (userId, resourceId) => {
   try {
-    const usersWithPermission = await getUsersForResource(userId, resourceId);
-    const users = usersWithPermission.map((permission) => {
-      return { userId: permission.userId, permission: permission.permission };
-    });
-
+    const users = await getUsersForResource(userId, resourceId);
     return users;
   } catch (err) {
     throw new Error(err);

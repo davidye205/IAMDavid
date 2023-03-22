@@ -3,6 +3,7 @@ const verify = require("../utils/verifyToken");
 const {
   getAllPermissionsForUser,
   getPermissionForResource,
+  getUsersForResource,
   upsertPermission,
   deletePermissionsForResource,
 } = require("../controllers/permissionController");
@@ -31,6 +32,18 @@ router.get("/:resourceId", verify, async (req, res) => {
   }
 });
 
+//Get all users with a permission on a specified resource as a resource manager
+router.get("/:resourceId/users", verify, async (req, res) => {
+  try {
+    const usersForResource = await getUsersForResource(
+      req.user._id,
+      req.params.resourceId
+    );
+    res.status(200).send(usersForResource);
+  } catch (err) {
+    res.status(400).send(err.message);
+  }
+});
 //Register permission for a user
 router.post("/:resourceId", verify, async (req, res) => {
   try {
